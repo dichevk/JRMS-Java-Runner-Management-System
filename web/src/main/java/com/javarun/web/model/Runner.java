@@ -19,18 +19,16 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "teams")
-public class Team {
+@Table(name = "runners")
+public class Runner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String photoUrl;
-    private String content;
+    private String name;
+    private String birthDate;
+    private String info;
+    private String identityId;
+    private Integer number;
+    private History history;
 
-    @CreationTimestamp
-    private LocalDateTime createdOn;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedOn;
 }
