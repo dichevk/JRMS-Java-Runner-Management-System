@@ -29,6 +29,6 @@ public class Runner {
     private String info;
     private String identityId;
     private Integer number;
-    private History history;
+    // private History history;
 
 }

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +30,6 @@ public class Event {
     private LocalDateTime updatedOn;
 
     @ManyToOne
-    @JoinColumn(name="club_id", nullable = false)
-    private Club club;
+    @JoinColumn(name="team_id", nullable = false)
+    private Team team;
 }
