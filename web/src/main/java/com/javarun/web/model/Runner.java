@@ -29,6 +29,7 @@ public class Runner {
     private String info;
     private String identityId;
     private Integer number;
-    // private History history;
+    private History history;
+    private List<HistoryRecord> records = new ArrayList<HistoryRecord>();
 
 }
