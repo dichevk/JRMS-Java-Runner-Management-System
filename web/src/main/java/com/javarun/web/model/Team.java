@@ -10,9 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -27,7 +25,7 @@ public class Team {
     private String title;
     private String photoUrl;
     private String content;
-
+    private List<Runner> runners = new ArrayList<>();
     @CreationTimestamp
     private LocalDateTime createdOn;
 

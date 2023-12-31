@@ -30,6 +30,7 @@ public class Runner {
     private String identityId;
     private Integer number;
     private History history;
+    private Team team; 
     private List<HistoryRecord> records = new ArrayList<HistoryRecord>();
 
 }

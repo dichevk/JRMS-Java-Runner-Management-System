@@ -25,6 +25,7 @@ public class HistoryRecord {
     private Long id;
     private String title;
     private Runner runner;
+    private History history;
     private LocalDateTime date;
     private String achievement;
     @CreationTimestamp
