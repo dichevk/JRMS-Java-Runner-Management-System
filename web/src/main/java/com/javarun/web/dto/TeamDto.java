@@ -1,10 +1,11 @@
 package com.javarun.web.dto;
 
-import com.javarun.web.model.User;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.javarun.web.models.User;
 
 import javax.persistence.Id;
 import javax.persistence.GenerationType;
@@ -19,11 +20,11 @@ public class TeamDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Club title should not be empty")
+    @NotEmpty
     private String title;
-    @NotEmpty(message = "Photo link should not be empty")
+    @NotEmpty
     private String photoUrl;
-    @NotEmpty(message = "Content should not be empty")
+    @NotEmpty
     private String content;
     private User createdBy;
     @CreationTimestamp
@@ -31,4 +32,5 @@ public class TeamDto {
     @UpdateTimestamp
     private LocalDateTime updatedOn;
     private List<EventDto> events;
+    private List<RunnerDto> runners;
 }

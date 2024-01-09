@@ -1,4 +1,4 @@
-package com.javarun.web.model;
+package com.javarun.web.models;
 
 
 import lombok.AllArgsConstructor;

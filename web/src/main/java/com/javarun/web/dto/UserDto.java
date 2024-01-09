@@ -1,9 +1,10 @@
 package com.javarun.web.dto;
 
 import lombok.Data;
-import com.javarun.web.model.Role;
 import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
+
+import com.javarun.web.models.Role;
 
 @Data
 public class UserDto {

@@ -1,4 +1,4 @@
-package com.javarun.web.model;
+package com.javarun.web.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,11 +13,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "histories")
-public class History {
+@Entity(name = "roles")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Runner runner;
-    private List<HistoryRecord> historyRecords = new ArrayList<HistoryRecord>();
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private List<Runner> runners = new ArrayList<>();
 }

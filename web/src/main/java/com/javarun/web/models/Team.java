@@ -1,4 +1,4 @@
-package com.javarun.web.model;
+package com.javarun.web.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +25,21 @@ public class Team {
     private String title;
     private String photoUrl;
     private String content;
+    
+    @ManyToOne
+    @JoinColumn(name = "created_by", nullable = false)
+    private User createdBy;
+
+    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
     private List<Runner> runners = new ArrayList<>();
+
     @CreationTimestamp
     private LocalDateTime createdOn;
 
     @UpdateTimestamp
     private LocalDateTime updatedOn;
+    
+    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
+    private List<Event> events = new ArrayList<>();
+
 }
