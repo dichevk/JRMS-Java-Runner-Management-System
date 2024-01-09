@@ -19,5 +19,6 @@ public class History {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Runner runner;
+    private Team team;
     private List<HistoryRecord> historyRecords = new ArrayList<HistoryRecord>();
 }

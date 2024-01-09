@@ -38,7 +38,10 @@ public class Team {
 
     @UpdateTimestamp
     private LocalDateTime updatedOn;
-    
+
+    @OneToOne
+    private History history;
+
     @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();
 
