@@ -18,7 +18,8 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "records")
+@Entity
+@Table(name="historyRecords")
 public class HistoryRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
