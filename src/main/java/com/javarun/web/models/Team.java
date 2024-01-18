@@ -23,7 +23,6 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String photoUrl;
     private String content;
     
     @ManyToOne

@@ -2,13 +2,16 @@ package main.java.com.javarun.web.services.interfaces;
 
 import java.util.List;
 import java.util.Optional;
+import com.javarun.web.dto.EventDto;;
 
 public interface IEventService {
-    List<Event> getAllEvents();
+    List<EventDto> getAllEvents();
 
-    Optional<Event> getEventById(Long eventId);
+    Optional<EventDto> getEventById(Long eventId);
 
-    void saveEvent(Event event);
+    void createEvent(EventDto eventDto, Long teamId);
 
     void deleteEvent(Long eventId);
+
+    void updateEvent(EventDto eventDto);
 }

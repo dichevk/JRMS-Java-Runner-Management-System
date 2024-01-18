@@ -25,7 +25,6 @@ public class EventDto {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String type;
-    private String photoUrl;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
     private Team team;
