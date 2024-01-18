@@ -5,6 +5,7 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.javarun.web.models.History;
 import com.javarun.web.models.User;
 
 import javax.persistence.Id;
@@ -22,8 +23,7 @@ public class TeamDto {
     private Long id;
     @NotEmpty
     private String title;
-    @NotEmpty
-    private String photoUrl;
+    private History history;
     @NotEmpty
     private String content;
     private User createdBy;
