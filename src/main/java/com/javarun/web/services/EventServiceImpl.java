@@ -24,7 +24,7 @@ public class EventServiceImpl implements IEventService {
     private final TeamRepository teamRepository;
 
     @Autowired
-    public EventService(EventRepository eventRepository) {
+    public EventService(EventRepository eventRepository, TeamRepository teamRepository) {
         this.eventRepository = eventRepository;
         this.teamRepository = teamRepository;
     }
