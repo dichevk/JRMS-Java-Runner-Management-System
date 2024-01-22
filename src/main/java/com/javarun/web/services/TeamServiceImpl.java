@@ -5,6 +5,7 @@ import com.javarun.web.dto.TeamDto;
 import com.javarun.web.repository.TeamRepository;
 import com.javarun.web.repository.RunnerRepository;
 import com.javarun.web.repository.EventRepository;
+import com.javarun.web.repository.HistoryRepository;
 
 import main.java.com.javarun.web.services.interfaces.EventDto;
 import main.java.com.javarun.web.services.interfaces.ITeamService;
@@ -15,16 +16,18 @@ public class TeamServiceImpl implements ITeamService {
     private final TeamRepository teamRepository;
     private final RunnerRepository runnerRepository;
     private final EventRepository eventRepository;
+    private final HistoryRepository historyRepository;
 
     @Autowired
-    public TeamServiceImpl(TeamRepository teamRepository, RunnerRepository runnerRepository, EventRepository eventRepository){
+    public TeamServiceImpl(TeamRepository teamRepository, RunnerRepository runnerRepository, EventRepository eventRepository, HistoryRepository historyRepository){
         this.teamRepository = teamRepository;
         this.runnerRepository = runnerRepository;
         this.eventRepository = eventRepository;
+        this.historyRepository = historyRepository;
     }
 
     @Override
-    public void createTeam(TeamDto teamDto, List<RunnerDto> runners, List<EventDto> events) {
+    public void createTeam(TeamDto teamDto, List<RunnerDto> runners, Long historyId, List<EventDto> events) {
         // TODO Auto-generated method stub
         
     }
