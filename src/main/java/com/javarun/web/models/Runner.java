@@ -25,4 +25,5 @@ public class Runner {
     @OneToOne
     private History history;
     private Team team;
+    private List<Event> events;
 }

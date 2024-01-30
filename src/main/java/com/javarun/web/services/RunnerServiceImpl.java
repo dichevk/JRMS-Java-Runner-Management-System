@@ -2,11 +2,21 @@ package main.java.com.javarun.web.services;
 
 import com.javarun.web.dto.EventDto;
 import com.javarun.web.dto.RunnerDto;
+import com.javarun.web.models.History;
+import com.javarun.web.models.Runner;
 import com.javarun.web.repository.EventRepository;
 import com.javarun.web.repository.HistoryRepository;
 import com.javarun.web.repository.RunnerRepository;
 import com.javarun.web.repository.TeamRepository;
 import com.javarun.web.services.interfaces.IRunnerService;
+import com.javarun.web.mapper.RunnerMapper.mapToRunner;
+import com.javarun.web.mapper.RunnerMapper.mapToRunnerDto;
+import com.javarun.web.mapper.EventMapper.mapToEventDto;
+
+import com.javarun.web.dto.EventDto;
+
+import jdk.jfr.Event;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +62,18 @@ public class RunnerServiceImpl implements IRunnerService {
      */
     @Override
     public void createRunner(RunnerDto runnerDto, Long teamId, Long historyId, List<EventDto> events) {
-        // TODO: Implement the logic to create a runner
+        Team team = teamRepository.findById(teamId).get();
+        History history = historyRepository.findById(historyId).get();
+        List<Event>runnerEvents = new List<Event>();
+        for(Event event : events){
+            EventDto eventDto = mapToEventDto(event);
+            runnerEvents.add(eventRepository.findById(eventDto.getId()).get());
+        } 
+        Runner runner = mapToRunner(runnerDto);
+        runner.setTeam(team);
+        runner.setHistory(history);
+        runner.setEvents(runnerEvents);
+        runnerRepository.save(runner);
     }
 
     /**
@@ -62,7 +83,7 @@ public class RunnerServiceImpl implements IRunnerService {
      */
     @Override
     public void deleteRunner(Long runnerId) {
-        // TODO: Implement the logic to delete a runner
+        runnerRepository.deleteById(runnerId);        
     }
 
     /**
@@ -72,8 +93,12 @@ public class RunnerServiceImpl implements IRunnerService {
      */
     @Override
     public List<RunnerDto> getAllRunners() {
-        // TODO: Implement the logic to retrieve all runners
-        return null;
+        List<Runner> runnerObjs = runnerRepository.findAll();
+        List<RunnerDto> runners = new List<RunnerDto>();
+        for(Runner runner : runnerObjs){
+            runners.append(mapToRunnerDto(runner));
+        }
+        return runners;
     }
 
     /**
@@ -84,8 +109,7 @@ public class RunnerServiceImpl implements IRunnerService {
      */
     @Override
     public Optional<RunnerDto> getRunnerById(Long runnerId) {
-        // TODO: Implement the logic to retrieve a runner by ID
-        return Optional.empty();
+        return mapToRunnerDto(runnerRepository.findById(runnerId).get());
     }
 
     /**
@@ -95,6 +119,7 @@ public class RunnerServiceImpl implements IRunnerService {
      */
     @Override
     public void updateRunner(RunnerDto runnerDto) {
-        // TODO: Implement the logic to update a runner
+        Runner runner = mapToRunner(runnerDto);
+        runnerRepository.save(runner);
     }
 }
