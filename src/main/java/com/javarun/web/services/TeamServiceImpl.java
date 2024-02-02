@@ -1,11 +1,17 @@
 package main.java.com.javarun.web.services;
 
+import java.util.stream.Collectors;
+
 import com.javarun.web.dto.RunnerDto;
 import com.javarun.web.dto.TeamDto;
+import com.javarun.web.models.History;
+import com.javarun.web.models.Team;
 import com.javarun.web.repository.TeamRepository;
 import com.javarun.web.repository.RunnerRepository;
 import com.javarun.web.repository.EventRepository;
 import com.javarun.web.repository.HistoryRepository;
+
+import com.javarun.web.mapper.*;
 
 import main.java.com.javarun.web.services.interfaces.EventDto;
 import main.java.com.javarun.web.services.interfaces.ITeamService;
@@ -28,31 +34,39 @@ public class TeamServiceImpl implements ITeamService {
 
     @Override
     public void createTeam(TeamDto teamDto, List<RunnerDto> runners, Long historyId, List<EventDto> events) {
-        // TODO Auto-generated method stub
-        
+        History history = historyRepository.findById(historyId).get();
+        List<Event> eventObjs = events.stream().map(event -> mapToEvent(event)).collect(Collectors.toList());
+        List<Runner> runnerObjs = runners.stream().map(runner -> mapToRunner(runner)).collect(Collectors.toList());
+        Team team = mapToTeam(teamDto);
+        team.setRunners(runnerObjs);
+        team.setEvents(eventObjs);
+        team.setHistory(history);
+        teamRepository.save(team);
     }
 
     @Override
     public void deleteTeam(Long teamId) {
-        // TODO Auto-generated method stub
-        
+        Team team = teamRepository.deleteById(teamId);
     }
 
     @Override
     public List<TeamDto> getAllTeams() {
-        // TODO Auto-generated method stub
-        return null;
+        List<Team> teams = teamRepository.findAll();
+        List<TeamDto> teamDtos = teams.stream().map(team -> mapToTeamDto(team)).collect(Collectors.toList());
+        return teamDtos;
     }
 
     @Override
     public Optional<TeamDto> getTeamById(Long teamId) {
-        // TODO Auto-generated method stub
-        return null;
+        Team team = teamRepository.findById(teamId).get();
+        TeamDto teamDto = mapToTeamDto(team);
+        return teamDto;
     }
 
     @Override
     public void udpateTeam(TeamDto teamDto) {
-        // TODO Auto-generated method stub
+        Team team = mapToTeam(teamDto);
+        teamRepository.save(team);
         
     }
     
