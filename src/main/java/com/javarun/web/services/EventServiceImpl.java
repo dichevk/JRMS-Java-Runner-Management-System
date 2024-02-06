@@ -63,7 +63,7 @@ public class EventServiceImpl implements IEventService {
      * Create a new event associated with a specific team.
      *
      * @param eventDto The EventDto representing the new event.
-     * @param teamId   The ID of the team associated with the event.
+     * @param teamId The ID of the team associated with the event.
      */
     @Override
     public void createEvent(EventDto eventDto, Long teamId ) {

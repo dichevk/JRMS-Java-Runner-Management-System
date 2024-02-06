@@ -6,15 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing events.
  */
 @RestController
+@EnableAsync
 @RequestMapping("/events")
 public class EventController {
 
-    private final IEventService eventService;
+    private final main.java.com.javarun.web.services.interfaces.IEventService eventService;
 
     /**
      * Constructor to inject the EventService dependency.
@@ -32,7 +34,7 @@ public class EventController {
      * @return A list of EventDto representing all events.
      */
     @GetMapping
-    public List<EventDto> getAllEvents() {
+    public List<EventDto> getAllEvents()  {
         return eventService.getAllEvents();
     }
 
@@ -53,8 +55,8 @@ public class EventController {
      * @param eventDto The EventDto representing the new event.
      * @param teamId   The ID of the team associated with the event.
      */
-    @PostMapping("/{teamId}")
-    public void createEvent(@RequestBody EventDto eventDto, @PathVariable Long teamId) {
+    @PostMapping
+    public void createEvent(@RequestBody EventDto eventDto, Long teamId) {
         eventService.createEvent(eventDto, teamId);
     }
 
@@ -73,8 +75,11 @@ public class EventController {
      *
      * @param eventDto The EventDto representing the updated event details.
      */
-    @PutMapping
-    public void updateEvent(@RequestBody EventDto eventDto) {
-        eventService.updateEvent(eventDto);
+    @PutMapping("/{eventId}")
+    public void updateEvent(@RequestBody EventDto eventDto, @PathVariable Long eventId) {
+        Optional<EventDto> foundEvent = eventService.getEventById(eventId);
+        if(foundEvent.isPresent()){
+            eventService.updateEvent(eventDto);
+       }
     }
 }

@@ -2,7 +2,7 @@ package main.java.com.javarun.web.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Entity Already exists")
+@ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Entity does not satisfy the minimal constraints")
 public class EntityAlreadyExistsException extends Exception{
     static final long serialVersionUID = 1L;
     public EntityAlreadyExistsException(String message){
