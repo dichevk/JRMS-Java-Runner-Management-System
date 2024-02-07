@@ -9,31 +9,41 @@ import com.javarun.web.dto.TeamDto;
 
 public interface IRunnerService {
     /**
-     * @return
+     * Get a list of all runners.
+     *
+     * @return A list of RunnerDto representing all runners.
      */
     List<RunnerDto> getAllRunners();
     
     /**
-     * @param runnerId
-     * @return
+     * Get details of a specific runner by its ID.
+     *
+     * @param runnerId The ID of the runner to retrieve.
+     * @return The RunnerDto representing the requested runner, or an empty Optional if not found.
      */
     Optional<RunnerDto> getRunnerById(Long runnerId);
     
     /**
-     * @param runnerDto
-     * @param teamId
-     * @param historyId
-     * @param events
+     * Create a new runner associated with a specific team, history, and events.
+     *
+     * @param runnerDto   The RunnerDto representing the new runner.
+     * @param teamId      The ID of the team associated with the runner.
+     * @param historyId   The ID of the history associated with the runner.
+     * @param events      The list of EventDto representing events associated with the runner.
      */
     void createRunner(RunnerDto runnerDto, Long teamId, Long historyId, List<EventDto> events);
 
     /**
-     * @param runnerId
+     * Delete a runner by its ID.
+     *
+     * @param runnerId The ID of the runner to delete.
      */
     void deleteRunner(Long runnerId);
 
     /**
-     * @param runnerDto
+     * Update the details of an existing runner.
+     *
+     * @param runnerDto The RunnerDto representing the updated runner details.
      */
     void udpateRunner(RunnerDto runnerDto);
 }
