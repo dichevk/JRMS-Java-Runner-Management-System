@@ -25,8 +25,9 @@ public interface IEventService {
      *
      * @param eventDto The EventDto representing the new event.
      * @param teamId The ID of the team associated with the event.
+     * @param runnerDtos a List of runnerDtos associated with the event
      */
-    void createEvent(EventDto eventDto, Long teamId);
+    void createEvent(EventDto eventDto, Long teamId, List<RunnerDto>runnerDtos);
 
     /**
      * Delete an event by its ID.

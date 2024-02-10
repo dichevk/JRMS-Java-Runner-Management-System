@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -34,7 +35,7 @@ public class Event {
     private LocalDateTime createdOn;
     @UpdateTimestamp
     private LocalDateTime updatedOn;
-
+    private List<Runner> runners;
     @ManyToOne
     @JoinColumn(name="team_id", nullable = false)
     private Team team;

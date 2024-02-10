@@ -66,7 +66,8 @@ public class EventServiceImpl implements IEventService {
      * @param teamId The ID of the team associated with the event.
      */
     @Override
-    public void createEvent(EventDto eventDto, Long teamId ) {
+    public void createEvent(EventDto eventDto, Long teamId, List<RunnerDto> runnerDtos) {
+        
         Team team = teamRepository.findById(teamId).get();
         Event event = mapToEvent(eventDto);
         event.setTeam(team);

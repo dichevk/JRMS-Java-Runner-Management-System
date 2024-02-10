@@ -14,6 +14,7 @@ public class EventMapper {
                 .createdOn(eventDto.getCreatedOn())
                 .updatedOn(eventDto.getUpdatedOn())
                 .team(eventDto.getTeam())
+                .runners(eventDto.getRunners())
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class EventMapper {
                 .createdOn(event.getCreatedOn())
                 .updatedOn(event.getUpdatedOn())
                 .team(event.getTeam())
+                .runners(event.getRunners())
                 .build();
     }
 }
