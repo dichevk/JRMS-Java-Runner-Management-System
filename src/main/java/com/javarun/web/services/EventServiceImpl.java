@@ -9,6 +9,7 @@ import com.javarun.web.repository.TeamRepository;
 import com.javarun.web.models.Team;
 import com.javarun.web.models.Event;
 import main.java.com.javarun.web.services.interfaces.IEventService;
+import main.java.com.javarun.web.services.interfaces.RunnerDto;
 
 import com.javarun.web.mapper.EventMapper.mapToEvent;
 import com.javarun.web.mapper.EventMapper.mapToEventDto;
@@ -67,7 +68,7 @@ public class EventServiceImpl implements IEventService {
      */
     @Override
     public void createEvent(EventDto eventDto, Long teamId, List<RunnerDto> runnerDtos) {
-        
+
         Team team = teamRepository.findById(teamId).get();
         Event event = mapToEvent(eventDto);
         event.setTeam(team);

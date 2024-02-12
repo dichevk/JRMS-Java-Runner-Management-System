@@ -45,5 +45,5 @@ public interface IRunnerService {
      *
      * @param runnerDto The RunnerDto representing the updated runner details.
      */
-    void udpateRunner(RunnerDto runnerDto);
+    void updateRunner(RunnerDto runnerDto);
 }
