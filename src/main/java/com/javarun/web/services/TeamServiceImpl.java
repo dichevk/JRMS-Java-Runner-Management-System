@@ -13,6 +13,9 @@ import com.javarun.web.repository.HistoryRepository;
 import com.javarun.web.repository.RunnerRepository;
 import com.javarun.web.repository.TeamRepository;
 import com.javarun.web.services.interfaces.ITeamService;
+
+import main.java.com.javarun.web.dto.CoachDto;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,16 +59,18 @@ public class TeamServiceImpl implements ITeamService {
      * @param events    The list of EventDto representing events associated with the team.
      */
     @Override
-    public void createTeam(TeamDto teamDto, List<RunnerDto> runners, Long historyId, List<EventDto> events) {
+    public void createTeam(TeamDto teamDto, List<RunnerDto> runners, Long historyId, List<EventDto> events, CoachDto coachDto) {
         // Placeholder implementation - Replace with actual logic
         History history = historyRepository.findById(historyId).orElse(null);
         if (history != null) {
             List<Event> eventObjs = events.stream().map(TeamMapper::mapToEvent).collect(Collectors.toList());
             List<Runner> runnerObjs = runners.stream().map(TeamMapper::mapToRunner).collect(Collectors.toList());
             Team team = TeamMapper.mapToTeam(teamDto);
+            Coach coach = CoachMapper.mapToCoach(coachDto);
             team.setRunners(runnerObjs);
             team.setEvents(eventObjs);
             team.setHistory(history);
+            team.setCoach(coach);
             teamRepository.save(team);
         }
     }

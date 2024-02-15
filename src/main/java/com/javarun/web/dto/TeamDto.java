@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.javarun.web.models.History;
 import com.javarun.web.models.User;
+import com.javarun.web.models.Coach;
 
 import javax.persistence.Id;
 import javax.persistence.GenerationType;
@@ -33,4 +34,5 @@ public class TeamDto {
     private LocalDateTime updatedOn;
     private List<EventDto> events;
     private List<RunnerDto> runners;
+    private Coach coach; 
 }

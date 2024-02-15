@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import main.java.com.javarun.web.models.Team;
-import com.javarun.web.models.History;
+
 
 @Data
 @NoArgsConstructor

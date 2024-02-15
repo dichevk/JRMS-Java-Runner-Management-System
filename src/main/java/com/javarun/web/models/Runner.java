@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import main.java.com.javarun.web.models.History;
+import main.java.com.javarun.web.models.Team;
+import main.java.com.javarun.web.models.Event;
 
 import javax.persistence.*;
 

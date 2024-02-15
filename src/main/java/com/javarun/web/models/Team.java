@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import main.java.com.javarun.web.models.Runner;
+import main.java.com.javarun.web.models.Coach;
+import main.java.com.javarun.web.models.History;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -40,6 +44,9 @@ public class Team {
 
     @OneToOne
     private History history;
+
+    @OneToOne
+    private Coach coach;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
     private List<Event> events = new ArrayList<>();

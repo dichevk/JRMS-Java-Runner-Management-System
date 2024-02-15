@@ -13,7 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.Id;
 import javax.persistence.Entity;
-
+import main.java.com.javarun.web.models.Runner;
+import main.java.com.javarun.web.models.Team;
+import main.java.com.javarun.web.models.HistoryRecord;
 import java.time.LocalDateTime;
 import java.util.List;
 

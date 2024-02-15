@@ -8,6 +8,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import main.java.com.javarun.web.models.HistoryRecord;
+import main.java.com.javarun.web.models.Runner;
+import main.java.com.javarun.web.models.Team;
 
 @Getter
 @Setter

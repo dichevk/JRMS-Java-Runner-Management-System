@@ -14,6 +14,7 @@ public class TeamMapper {
             .updatedOn(teamDto.getUpdatedOn())
             .history(teamDto.getHistory())
             .runners(teamDto.getRunners())
+            .coach(teamDto.getCoach())
             .build();
     }
     public static TeamDto mapToTeamDto(Team team){
@@ -26,6 +27,7 @@ public class TeamMapper {
             .updatedOn(team.getUpdatedOn())
             .history(team.getHistory())
             .runners(team.getRunners())
+            .coach(team.getCoach())
             .build();
     }
 }

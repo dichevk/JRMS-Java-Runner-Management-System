@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import com.javarun.web.models.User;
+import main.java.com.javarun.web.models.User;
+
 
 @Getter
 @Setter
