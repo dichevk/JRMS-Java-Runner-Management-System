@@ -38,11 +38,11 @@ public class RunnerController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createRunner(RunnerDto runnerDto, Long teamId, Long historyId, List<EventDto>events) throws InvalidIdentifierException, EntityAlreadyExistsException{
+    public void createRunner(@RequestBody RunnerDto runnerDto, Long teamId, Long historyId, List<EventDto>events) throws InvalidIdentifierException, EntityAlreadyExistsException{
         runnerService.createRunner(runnerDto, teamId, historyId, events);
     }
     @PutMapping("/{runnerId}")
-    public RunnerDto updateRunner(RunnerDto runnerDto, @PathVariable Long runnerId) throws EntityNotFoundException, ConstraintsViolationException, InvalidIdentifierException{
+    public RunnerDto updateRunner(@RequestBody RunnerDto runnerDto, @PathVariable Long runnerId) throws EntityNotFoundException, ConstraintsViolationException, InvalidIdentifierException{
         Optional<RunnerDto>foundRunner = runnerService.getRunnerById(runnerId);
         if(foundRunner.isPresent()){
             runnerService.udpateRunner(runnerDto);
