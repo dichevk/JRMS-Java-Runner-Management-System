@@ -31,8 +31,9 @@ public interface ITeamService {
      * @param runners   The list of RunnerDto representing runners associated with the team.
      * @param historyId The ID of the history associated with the team.
      * @param events    The list of EventDto representing events associated with the team.
+     * @param coachId   The id of the coach associated with the team. 
      */
-    void createTeam(TeamDto teamDto, List<RunnerDto> runners, Long historyId, List<EventDto> events);
+    Optional<TeamDto> createTeam(TeamDto teamDto, Long coachId, Long historyId, List<EventDto> events, List<RunnerDto> runners);
 
     /**
      * Delete a team by its ID.

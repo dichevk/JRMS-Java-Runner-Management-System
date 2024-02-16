@@ -1,15 +1,22 @@
 package main.java.com.javarun.web.controllers;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import main.java.com.javarun.web.controllers.exceptions.*;
+import main.java.com.javarun.web.exceptions.EntityAlreadyExistsException;
+import main.java.com.javarun.web.exceptions.EntityNotFoundException;
+import main.java.com.javarun.web.exceptions.InvalidIdentifierException;
 import main.java.com.javarun.web.services.interfaces.IEventService;
 import main.java.com.javarun.web.services.interfaces.IRunnerService;
+
+import com.javarun.web.dto.EventDto;
 import com.javarun.web.dto.RunnerDto;
 
 @RestController
+@EnableAsync
 @RequestMapping("v1/runners")
 public class RunnerController {
     private final IRunnerService runnerService;
@@ -19,7 +26,7 @@ public class RunnerController {
         this.runnerService = runnerService;
     }
     @GetMapping
-    public List<RunnerDto> runners(){
+    public List<RunnerDto> getAllRunners(){
         runnerService.getAllRunners();
     }
     @GetMapping("/{runnerId}")
