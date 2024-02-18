@@ -89,9 +89,17 @@ public class TeamServiceImpl implements ITeamService {
      * @param teamId The ID of the team to delete.
      */
     @Override
-    public void deleteTeam(Long teamId) {
+    public Boolean deleteTeam(Long teamId) {
         // Placeholder implementation - Replace with actual logic
-        teamRepository.deleteById(teamId);
+        Team foundTeam = teamRepository.findById(teamId).get();
+        if(Objects.nonNull(foundTeam)){
+            teamRepository.deleteById(teamId);
+        }
+        Team deletedTeam = teamRepository.findById(teamId).get();
+        if(Objects.isNull(deletedTeam)){
+            return true;
+        }
+        return false;
     }
 
     /**

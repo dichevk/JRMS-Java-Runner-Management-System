@@ -40,7 +40,7 @@ public interface ITeamService {
      *
      * @param teamId The ID of the team to delete.
      */
-    void deleteTeam(Long teamId);
+    Boolean deleteTeam(Long teamId);
 
     /**
      * Update the details of an existing team.
