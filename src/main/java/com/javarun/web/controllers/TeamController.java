@@ -65,7 +65,7 @@ public class TeamController {
         return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("{teamId}")
+    @DeleteMapping("/{teamId}")
     public ResponseEntity<Boolean> deleteTeam(@PathVariable Long teamId) throws InvalidIdentifierException{
         if(teamService.deleteTeam(teamId)){
             return new ResponseEntity<>(true, HttpStatus.OK);
