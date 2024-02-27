@@ -14,8 +14,7 @@ import com.javarun.web.mapper.RunnerMapper.mapToRunnerDto;
 import com.javarun.web.mapper.EventMapper.mapToEventDto;
 
 import com.javarun.web.dto.EventDto;
-
-import jdk.jfr.Event;
+import com.javarun.models.Event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
