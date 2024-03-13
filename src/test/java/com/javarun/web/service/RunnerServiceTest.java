@@ -78,5 +78,34 @@ public class RunnerServiceTest {
         verify(eventRepository, times(events.size())).findById(any());
         verify(runnerRepository, times(1)).save(any());
 }
+    @Test
+    public void testGetAllRunners() {
+        List<Runner> runnerObjs = Arrays.asList(Mockito.mock(Runner.class), Mockito.mock(Runner.class));
+        Page<Runner> runnersPage = new PageImpl<>(runnerObjs);
+
+        // Mocking repository behavior
+        when(runnerRepository.findAll(any(Pageable.class))).thenReturn(runnersPage);
+
+        // Call the method
+        Page<RunnerDto> runnerDtoPage = runnerService.getAllRunners(PageRequest.of(0, 10)); // Example page request
+
+        // Verify repository interactions
+        verify(runnerRepository, times(1)).findAll(any(Pageable.class));
+        assertThat(runnerDtoPage.getContent()).hasSize(2); // Assuming there are 2 runners returned
+    }
+    @Test
+    public void testGetRunnerById() {
+        Long runnerId = 1L;
+        Runner runner = Mockito.mock(Runner.class);
+        when(runnerRepository.findById(runnerId)).thenReturn(Optional.of(runner));
+    
+        // Call the method
+        Optional<RunnerDto> result = runnerService.getRunnerById(runnerId);
+    
+        // Verify repository interactions
+        verify(runnerRepository, times(1)).findById(runnerId);
+        assertThat(result).isPresent(); // Assuming the runner with the given ID exists
+    }
+    
 
 }
