@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import main.java.com.javarun.web.models.Runner;
 import main.java.com.javarun.web.models.Team;
+import main.java.com.javarun.web.models.Viewer;
 import main.java.com.javarun.web.models.HistoryRecord;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -41,4 +42,5 @@ public class Event {
     @ManyToOne
     @JoinColumn(name="team_id", nullable = false)
     private Team team;
+    private List<Viewer> viewers;
 }

@@ -22,6 +22,6 @@ public class Viewer {
     private String passId; 
     private String name;
     private String country; 
-    private String iban; 
+    private String iban;
     private Event event; 
 }

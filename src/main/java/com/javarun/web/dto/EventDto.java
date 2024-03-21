@@ -29,4 +29,5 @@ public class EventDto {
     private LocalDateTime updatedOn;
     private Team team;
     private List<RunnerDto> runners;
+    private List<ViewerDto> viewers;
 }
